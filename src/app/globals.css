@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+ * Paleta sobria: tinta (zinc-900, nunca negro absoluto), tinta-2 para texto secundario (4.8:1 sobre hueso, el más
+ * oscuro de los fondos), papel y hueso para fondos, linea para bordes finos y tenues de tarjetas y separadores,
+ * borde-campo para el borde de los campos (3:1 sobre blanco: hay que poder encontrarlos), oro como acento y
+ * rojo/azul solo para estados. Los valores de COLOR_TEMA y COLOR_MARCA en src/lib/marca.ts deben coincidir con papel
+ * y tinta. `contraste.test.ts` calcula los contrastes de estos pares.
+ */
+@theme {
+  --color-tinta: #18181b;
+  --color-tinta-2: #686872;
+  --color-papel: #f9f9f6;
+  --color-hueso: #f1f1ee;
+  --color-linea: #e4e4e7;
+  --color-borde-campo: #8b8b94;
+  --color-oro: #e0a526;
+  --color-rojo: #c8372d;
+  --color-azul: #1f4e8c;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  background: var(--color-papel);
+  color: var(--color-tinta);
+  /* Texto base de 16 px: evita que iOS haga zoom al enfocar un campo. */
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-papel);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * Campos de hora: sin el ícono de reloj del navegador. En un celular de 360 px quita ancho que hace falta para
+ * que se lea "09:00 a. m." completo; el campo se abre igual al tocarlo.
+ */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* Íconos de línea finos en toda la app (lucide trae 2 por defecto). */
+.lucide {
+  stroke-width: 1.75;
+}
+
+/*
+ * Recorrido guiado: aro que late alrededor de lo que hay que tocar. Un trazo fino de tinta con un halo de oro; sobre las
+ * barras fijas (z-20) y bajo la hoja del recorrido (z-40: el aro solo se dibuja donde la hoja no tapa). Late cuatro
+ * veces y se queda quieto; sin movimiento si la persona lo pidió así.
+ */
+@keyframes guia-late {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px var(--color-papel),
+      0 0 0 5px var(--color-tinta),
+      0 0 0 8px color-mix(in srgb, var(--color-oro) 55%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px var(--color-papel),
+      0 0 0 5px var(--color-tinta),
+      0 0 0 14px color-mix(in srgb, var(--color-oro) 30%, transparent);
+  }
+}
+[data-guia-aro] {
+  position: fixed;
+  display: none;
+  z-index: 30;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 3px var(--color-papel),
+    0 0 0 5px var(--color-tinta),
+    0 0 0 8px color-mix(in srgb, var(--color-oro) 55%, transparent);
+  animation: guia-late 1.2s ease-in-out 4;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-guia-aro] {
+    animation: none;
+  }
+}
+
+/* Al imprimir (el cartel de reservas) sale solo lo que no lleva `print:hidden`, sobre papel blanco y a todo el ancho. */
+@media print {
+  html,
+  body {
+    background: #fff;
+  }
+  .columna-app {
+    max-width: none;
+    padding-bottom: 0;
+  }
+}
+
+/* Columna de celular: en pantallas grandes solo se centra. */
+.columna-app {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 28rem;
+  min-height: 100dvh;
+}
