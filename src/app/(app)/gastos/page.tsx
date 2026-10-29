@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Camera, Plus, Receipt } from "lucide-react";
 import { BarraAccion } from "@/components/layout/barra-accion";
 import { EnlaceFila } from "@/components/layout/enlace-fila";

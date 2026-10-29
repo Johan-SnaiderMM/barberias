@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { CalendarClock } from "lucide-react";
 import { cancelarMiCita } from "@/app/acciones/reserva";
 import { Button, botonVariantes } from "@/components/ui/button";

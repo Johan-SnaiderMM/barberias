@@ -34,6 +34,13 @@ const csp = [
 const nextConfig: NextConfig = {
   // PGlite (base local de desarrollo) usa WASM: no debe empaquetarse.
   serverExternalPackages: ["@electric-sql/pglite", "web-push"],
+  // La demo pública (DEMO_PUBLICA=1) arma su base al arrancar: la función necesita leer las migraciones.
+  outputFileTracingIncludes: {
+    "/*": ["./supabase/migrations/**/*"],
+    "/**": ["./supabase/migrations/**/*"],
+  },
+  // La demo pública no precarga enlaces (ver components/ui/enlace.tsx). Se decide al compilar, a partir de DEMO_PUBLICA.
+  env: { NEXT_PUBLIC_SIN_PRECARGA: process.env.DEMO_PUBLICA === "1" ? "1" : "" },
   // El indicador de desarrollo (círculo con la "N") tapaba los íconos de la barra inferior.
   devIndicators: false,
   async headers() {

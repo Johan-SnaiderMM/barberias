@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { MessageCircle } from "lucide-react";
 import { registrarRecordatorio } from "@/app/acciones/citas";
 import { botonVariantes } from "@/components/ui/button";

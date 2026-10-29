@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { ChevronRight, Plus } from "lucide-react";
 import { BarraAccion } from "@/components/layout/barra-accion";
 import { SinPermiso } from "@/components/layout/sin-permiso";

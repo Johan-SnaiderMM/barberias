@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { CalendarDays, TriangleAlert, Wallet } from "lucide-react";
 import { AvisoDemo } from "@/components/demo/aviso-demo";
 import { IniciarGuia } from "@/components/guia/iniciar-guia";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { notFound } from "next/navigation";
 import { CalendarPlus } from "lucide-react";
 import { InsigniaEstado } from "@/components/agenda/insignia-estado";

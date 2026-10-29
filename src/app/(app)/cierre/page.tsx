@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { redirect } from "next/navigation";
 import { CircleCheck, MessageCircle, TriangleAlert } from "lucide-react";
 import { AnularCierre } from "@/components/cierre/anular-cierre";

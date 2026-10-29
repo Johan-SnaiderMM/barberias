@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { CircleCheck } from "lucide-react";
 import { AvanzaGuia } from "@/components/guia/avanza-guia";
 import { BarraAccion } from "@/components/layout/barra-accion";

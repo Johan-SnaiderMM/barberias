@@ -35,12 +35,14 @@ export const DIR_MIGRACIONES = path.join(process.cwd(), "supabase", "migrations"
 
 /** Migraciones en orden: [nombre, sql]. Si todavía no hay carpeta, devuelve la lista vacía. */
 export function leerMigraciones(dir = DIR_MIGRACIONES): [string, string][] {
-  if (!fs.existsSync(dir)) return [];
+  // `turbopackIgnore`: el directorio es un parámetro y el empaquetado, al no poder seguirlo, traza el proyecto entero. Las
+  // migraciones se incluyen a propósito en next.config.ts (outputFileTracingIncludes).
+  if (!fs.existsSync(/*turbopackIgnore: true*/ dir)) return [];
   return fs
-    .readdirSync(dir)
+    .readdirSync(/*turbopackIgnore: true*/ dir)
     .filter((f) => f.endsWith(".sql"))
     .sort()
-    .map((f) => [f, fs.readFileSync(path.join(dir, f), "utf8")] as [string, string]);
+    .map((f) => [f, fs.readFileSync(path.join(/*turbopackIgnore: true*/ dir, f), "utf8")] as [string, string]);
 }
 
 /** Huella de las migraciones: si cambian, la base local de desarrollo se recrea sola. */

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { CalendarOff, Plus, UserPlus } from "lucide-react";
 import { SelectorDia } from "@/components/layout/selector-dia";
 import { TarjetaCita } from "@/components/agenda/tarjeta-cita";

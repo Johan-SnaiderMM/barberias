@@ -118,6 +118,12 @@ Patrones de referencia (NO copiar módulos ni su auto-deploy): `C:\Users\johan\O
 - Modo local sin Supabase: `.env.local` con `DEMO_BD=local` crea en `.local/` una barbería de prueba; se entra en
   `/entrar` con `dueno@local.test` y cualquier contraseña (solo desarrollo; en producción está apagado). La base
   local se recrea sola cuando cambian las migraciones (huella en `.local/huella.txt`): los datos de prueba se pierden.
+- Demo pública (`DEMO_PUBLICA=1`; `src/lib/local/` → `bd-local.ts`, `motor.ts`, `archivos.ts`, `preparar.ts`): sin `DATABASE_URL` es PGlite
+  en memoria para UN solo proceso (NO sirve en Vercel: cada instancia tendría su propia base); con `DATABASE_URL` es una base Postgres
+  compartida y vacía (p. ej. Neon) que sí sirve en Vercel, se vuelve a sembrar cada 3 h y se niega a tocar tablas ajenas o de otra demo
+  (`bd-postgres.test.ts`). Como corre en producción, se cierra lo cómodo de desarrollo: no hay entrada por contraseña, hay tope de fotos
+  (40 MB) y de usuarios anónimos, y reiniciar la demo también vacía las fotos. En Vercel el `Link` no precarga (`components/ui/enlace.tsx`):
+  cada precarga es una petición más. No lleva ninguna clave ni cuenta externa.
 - Pantallas del personal: `src/app/(app)/<pantalla>/page.tsx` empieza con `revisarPermiso("<pantalla>")`, maneja
   `permitido` con `<SinPermiso>` y la pantalla se agrega a `PANTALLAS` (`src/lib/areas.ts`) y, si lleva botón en la
   barra, a `ITEMS` de `barra-navegacion.tsx`. `/`, `/entrar` y `/unirme` son las únicas páginas exentas (una prueba

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Banknote, ChevronRight, Smartphone } from "lucide-react";
 import { cobrar } from "@/app/acciones/caja";
 import { ConfirmacionCobro } from "@/components/caja/confirmacion-cobro";

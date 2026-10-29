@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Plus } from "lucide-react";
 import { BotonActivoBarbero } from "@/components/barberos/boton-activo-barbero";
 import { BarraAccion } from "@/components/layout/barra-accion";

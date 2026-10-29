@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { notFound } from "next/navigation";
 import { BotonLiquidar } from "@/components/comisiones/boton-liquidar";
 import { BarraAccion } from "@/components/layout/barra-accion";

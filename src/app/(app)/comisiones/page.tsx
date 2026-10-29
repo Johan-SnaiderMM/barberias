@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { ChevronRight } from "lucide-react";
 import { SelectorPeriodo } from "@/components/comisiones/selector-periodo";
 import { SinPermiso } from "@/components/layout/sin-permiso";

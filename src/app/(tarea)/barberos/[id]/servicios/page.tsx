@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { notFound } from "next/navigation";
 import { FormularioServiciosBarbero } from "@/components/barberos/formulario-servicios-barbero";
 import { EncabezadoTarea } from "@/components/layout/encabezado-tarea";

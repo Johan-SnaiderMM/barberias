@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { BellRing, Globe } from "lucide-react";
 import { InsigniaEstado } from "@/components/agenda/insignia-estado";
 import { deberiaEstarEnAtencion, porCerrar as estaPorCerrar } from "@/lib/citas";

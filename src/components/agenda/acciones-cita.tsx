@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { CalendarClock } from "lucide-react";
 import { cambiarEstadoCita, cancelarCita } from "@/app/acciones/citas";
 import { Button, botonVariantes } from "@/components/ui/button";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { enlacesLegales } from "@/lib/legal";
 
 const ENLACE = "flex min-h-12 items-center rounded-xl px-1 text-base font-medium text-tinta-2 underline underline-offset-4 active:bg-hueso";

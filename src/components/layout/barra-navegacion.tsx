@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { usePathname } from "next/navigation";
 import { CalendarDays, House, Menu, UserRound, Wallet, type LucideIcon } from "lucide-react";
 import { puedeVer, type Pantalla, type Quien } from "@/lib/areas";

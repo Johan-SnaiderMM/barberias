@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Scissors } from "lucide-react";
 import { salir } from "@/app/acciones/sesion";
 import { Button, botonVariantes } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { obtenerContexto } from "@/lib/datos/contexto";
 import { demoDisponible } from "@/lib/demo";
 import { MARCA } from "@/lib/marca";
 import { obtenerUsuario } from "@/lib/sesion";
+import { usarDemoPublica } from "@/lib/supabase/servidor";
 import { BotonDemo } from "./boton-demo";
 import { FormularioClave } from "./formulario-clave";
 
@@ -23,6 +24,37 @@ export default async function Entrar() {
   const usuario = await obtenerUsuario().catch(() => null);
   const contexto = usuario ? await obtenerContexto().catch(() => null) : null;
   const dentro = contexto?.perfil && contexto.barberia ? { perfil: contexto.perfil, barberia: contexto.barberia } : null;
+
+  // Demo pública: no hay entrada por contraseña (no existe esa cuenta), solo el botón de la demo y el código del equipo.
+  if (usarDemoPublica() && !usuario) {
+    return (
+      <div className="columna-app flex flex-col px-4 pb-8 pt-[calc(1rem+env(safe-area-inset-top,0px))]">
+        <div className="flex items-center gap-2">
+          <span className="flex size-10 items-center justify-center rounded-lg border border-linea bg-oro">
+            <Scissors className="size-6" aria-hidden />
+          </span>
+          <span className="text-2xl font-semibold tracking-tight leading-none">{MARCA.nombre}</span>
+        </div>
+        <h1 className="mt-7 text-3xl font-semibold tracking-tight leading-tight">Demo de {MARCA.nombre}</h1>
+        <p className="mt-3 text-base leading-snug text-tinta-2">
+          Entra a una barbería de demostración con datos inventados. No pide correo ni contraseña, y lo que hagas aquí se
+          borra solo.
+        </p>
+        <div className="mt-6">
+          <BotonDemo />
+        </div>
+        <div className="mt-8 border-t border-hueso pt-6">
+          <p className="text-center text-base text-tinta-2">¿Eres del equipo? El dueño te manda un código.</p>
+          <Link
+            href="/unirme"
+            className={`${botonVariantes({ variante: "secundario", tamano: "lg", bloque: true })} mt-3`}
+          >
+            Tengo un código de invitación
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="columna-app flex flex-col px-4 pb-8 pt-[calc(1rem+env(safe-area-inset-top,0px))]">

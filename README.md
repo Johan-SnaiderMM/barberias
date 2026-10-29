@@ -42,6 +42,22 @@ Para empezar de cero, borra la carpeta `.local/` (también se recrea sola cuando
 
 ---
 
+## Demo pública (sin Supabase)
+
+Para que cualquiera la pruebe sin cuentas ni datos reales, la app puede correr con `DEMO_PUBLICA=1`: el mismo Postgres del modo local, abierto al público y con datos ficticios. Tiene dos formas:
+
+- **Sin `DATABASE_URL`: en memoria (PGlite), para un único proceso.** `npm run build` y luego `DEMO_PUBLICA=1 npm start`, o un contenedor o una máquina. **No sirve en un servidor sin estado como Vercel**: cada instancia tendría su propia base y las peticiones de una misma persona caerían en copias distintas.
+- **Con `DATABASE_URL`: una base Postgres compartida (p. ej. Neon, gratis).** Es la que sirve en Vercel: todas las copias de la app ven los mismos datos y la misma sesión. Al primer arranque arma el esquema y la demo, la recrea si cambian las migraciones y la vuelve a sembrar sola cada 3 horas. Usa una base **vacía**: si ya tiene otras tablas, o es de otra demo, se niega a tocarla.
+
+En los dos modos:
+
+- Lo que se haga en la demo se borra solo: al reciclarse el proceso (en memoria) o a las 3 horas (compartida).
+- No hay entrada por contraseña: se entra con **Probar la demo**.
+- Las fotos de los recibos viven en la memoria o en la propia base (tabla `demo.archivos`), con un tope de 40 MB. **Más → Reiniciar la demo** las vacía.
+- No hay avisos push ni envío real de WhatsApp: la app solo arma el enlace `wa.me`.
+
+Para montarla en Vercel: crea una base Neon vacía, conéctala al proyecto (Vercel agrega `DATABASE_URL`) y define `DEMO_PUBLICA=1`. Otras dos variables las fijan otros, no hace falta tocarlas: `NEXT_PUBLIC_SIN_PRECARGA` (la pone `next.config.ts` a partir de `DEMO_PUBLICA`, para que la demo no precargue enlaces) y `VERCEL` (la define Vercel; con ella la app marca como seguras las cookies de la demo).
+
 ## 2. Ponerla en internet: Supabase + Vercel (lo haces tú, a mano)
 
 > Nada de esto lo hace el código por ti. **No pegues claves en el chat ni las subas al repositorio.** La llave

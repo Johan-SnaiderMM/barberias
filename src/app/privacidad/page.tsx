@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { BloqueResponsable, DocumentoLegal, SeccionLegal } from "@/components/legal/documento-legal";
 import { obtenerResponsable } from "@/lib/datos/publico";
 import { enlacesLegales, PLAZOS_LEGALES, slugDeLaDireccion, VERSION_LEGAL } from "@/lib/legal";

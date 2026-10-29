@@ -10,7 +10,8 @@ export type UsuarioBD = { id: string; email: string | null };
 /**
  * Lo único que la app necesita de la base de datos. Hay dos implementaciones con la misma forma:
  *  - Supabase (producción y desarrollo normal).
- *  - PGlite local (DEMO_BD=local, solo fuera de producción) para desarrollar sin cuenta de Supabase.
+ *  - PGlite (DEMO_BD=local, solo fuera de producción) para desarrollar sin cuenta de Supabase; y la misma base abierta
+ *    al público (DEMO_PUBLICA=1) con datos ficticios: en memoria o, con DATABASE_URL, en un Postgres compartido.
  * Toda la app habla con la base SOLO por funciones RPC (ver supabase/migrations).
  */
 export interface BaseDatos {
@@ -40,13 +41,33 @@ export interface BaseDatos {
   leerArchivo(bucket: string, ruta: string): Promise<{ datos: Uint8Array; tipo: string } | null>;
 }
 
-/** El modo local solo existe fuera de producción: en producción `process.env.NODE_ENV` es constante y este código se elimina. */
+/**
+ * Demo pública: la base del modo local abierta al público, con datos ficticios y sin cuentas de Supabase. Hay que pedirla
+ * con DEMO_PUBLICA=1; sin esa variable no existe. Sin DATABASE_URL vive en la memoria de UN solo proceso; con DATABASE_URL
+ * (ver usarDemoCompartida) vive en una base Postgres compartida.
+ */
+export function usarDemoPublica(): boolean {
+  return process.env.DEMO_PUBLICA === "1";
+}
+
+/**
+ * Demo pública sobre una base Postgres compartida (p. ej. Neon). Es la que sirve en un servidor sin estado como Vercel:
+ * ahí cada petición puede caer en una copia distinta de la app, y una base en memoria por copia no es coherente.
+ */
+export function usarDemoCompartida(): boolean {
+  return usarDemoPublica() && Boolean(process.env.DATABASE_URL?.trim());
+}
+
+/**
+ * El modo local de desarrollo solo existe fuera de producción: en producción `process.env.NODE_ENV` es constante y esa
+ * parte se elimina. La única excepción es la demo pública, que se enciende a propósito con DEMO_PUBLICA=1.
+ */
 export function usarBdLocal(): boolean {
-  return process.env.NODE_ENV !== "production" && process.env.DEMO_BD === "local";
+  return usarDemoPublica() || (process.env.NODE_ENV !== "production" && process.env.DEMO_BD === "local");
 }
 
 export async function abrirBD(): Promise<BaseDatos> {
-  if (process.env.NODE_ENV !== "production" && usarBdLocal()) {
+  if (usarBdLocal()) {
     const { crearBdLocal } = await import("@/lib/local/bd-local");
     return crearBdLocal();
   }

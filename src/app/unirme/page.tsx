@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Scissors } from "lucide-react";
 import { salir } from "@/app/acciones/sesion";
 import { Button, botonVariantes } from "@/components/ui/button";
