@@ -4,6 +4,8 @@ PWA **mobile-first** para barberías pequeñas de Colombia (1 a 8 barberos): **a
 desde casa** (el cliente aparta con un enlace o un QR, sin cuenta ni app) y las **cuentas** del negocio: cobro en
 efectivo y Nequi, comisión de cada barbero, gastos con foto del recibo y cierre del día con resumen por WhatsApp.
 
+🌐 **Pruébala en vivo:** https://barberias-demo-lyart.vercel.app. Entra con «Probar la demo»; la barbería, las citas y el dinero son inventados y lo que hagas se borra solo.
+
 Se diseñó primero para **360×640 y 390×844** (celular Android de gama media, una mano): objetivos táctiles de 48 px,
 texto de 16 px, acciones abajo, sin `hover` y sin scroll horizontal. En pantallas grandes solo se centra una columna.
 
