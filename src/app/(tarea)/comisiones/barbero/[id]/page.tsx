@@ -57,7 +57,7 @@ export default async function ComisionesDeUnBarbero({
     <>
       <EncabezadoTarea titulo={barbero.activo ? barbero.nombre : `${barbero.nombre} (archivado)`} volverA={volverA} />
       <main className={`space-y-6 px-4 pt-5 ${hayAcciones ? "pb-40" : "pb-10"}`}>
-        <section className="rounded-xl border border-linea bg-white p-4">
+        <section className="rounded-xl border border-linea bg-superficie p-4">
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">
             {puedeLiquidar ? "Por pagarle" : "Por pagarte"} hasta {fechaCorta(hasta)}
           </p>
@@ -78,7 +78,7 @@ export default async function ComisionesDeUnBarbero({
           <section>
             <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Lo que lo compone</h2>
             <ListaPlegable
-              className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white"
+              className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-superficie"
               resumen={(n) => `Ver ${n} cobros anteriores`}
               filas={datos.cobros.map((c) => {
                 const contenido = (

@@ -65,7 +65,7 @@ export function CampoFoto({ foto, onCambio }: { foto: File | null; onCambio: (fo
       />
 
       {vista && foto ? (
-        <div className="flex items-center gap-3 rounded-xl border border-linea bg-white p-3">
+        <div className="flex items-center gap-3 rounded-xl border border-linea bg-superficie p-3">
           {/* eslint-disable-next-line @next/next/no-img-element -- vista previa local (blob:), no hay nada que optimizar */}
           <img src={vista} alt="Foto del recibo" className="size-20 shrink-0 rounded-lg object-cover" />
           <div className="min-w-0 flex-1">

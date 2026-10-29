@@ -34,7 +34,7 @@ export default async function Gastos({ searchParams }: { searchParams: Promise<{
         <SelectorDia fecha={fecha} hoy={hoy} ruta="/gastos" />
       </div>
 
-      <section className="mt-5 rounded-xl border border-linea bg-white p-4" aria-label="Lo gastado en el día">
+      <section className="mt-5 rounded-xl border border-linea bg-superficie p-4" aria-label="Lo gastado en el día">
         <div className="flex items-center gap-2 text-tinta-2">
           <Receipt className="size-5" aria-hidden />
           <p className="text-sm font-medium uppercase tracking-wider">Gastado</p>

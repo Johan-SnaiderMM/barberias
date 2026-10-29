@@ -27,7 +27,7 @@ export function AccionesMiCita({ token }: { token: string }) {
           Cancelar mi cita
         </Button>
       ) : (
-        <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-white p-4">
+        <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-superficie p-4">
           <input type="hidden" name="token" value={token} />
           <input type="hidden" name="motivo" value={motivo} />
           <p className="text-base font-medium">¿Seguro que quieres cancelar tu cita?</p>

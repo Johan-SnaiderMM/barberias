@@ -78,7 +78,7 @@ export function FormularioContacto({
         <p className="mt-1 text-base text-tinta-2">Para que tus clientes sepan a dónde llegar.</p>
       </div>
 
-      <p className="rounded-xl border border-linea bg-white px-4 py-3 text-base text-tinta-2">
+      <p className="rounded-xl border border-linea bg-superficie px-4 py-3 text-base text-tinta-2">
         También sale en el aviso y la política de privacidad, como el contacto para consultas y reclamos sobre los datos de
         tus clientes. Déjalo vacío para quitarlo.
       </p>

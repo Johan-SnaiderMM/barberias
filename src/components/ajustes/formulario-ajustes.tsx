@@ -18,7 +18,7 @@ import {
 } from "@/lib/ajustes-agenda";
 import type { EstadoForm } from "@/lib/errores";
 
-const SELECT = "min-h-12 w-full rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta";
+const SELECT = "min-h-12 w-full rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta";
 
 /**
  * Ajustes de la agenda: el interruptor de reservas en línea, el límite para que el cliente cancele o mueva y los
@@ -29,7 +29,7 @@ export function FormularioAjustes({ ajustes, slug }: { ajustes: AjustesAgenda; s
 
   return (
     <form action={accion} className="space-y-5 px-4 pt-5 pb-32">
-      <label className="flex min-h-14 items-start gap-3 rounded-xl border border-linea bg-white px-4 py-3">
+      <label className="flex min-h-14 items-start gap-3 rounded-xl border border-linea bg-superficie px-4 py-3">
         <input
           type="checkbox"
           name="reservas_en_linea"

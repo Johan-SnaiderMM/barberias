@@ -55,7 +55,7 @@ export function SelectorDiaHora({
               onClick={() => setDiaElegido(d)}
               className={cn(
                 "min-h-12 rounded-xl border px-2 text-base font-medium leading-tight",
-                d === activo ? "border-tinta bg-tinta text-white" : "border-linea bg-white text-tinta active:bg-hueso"
+                d === activo ? "border-tinta bg-tinta text-papel" : "border-linea bg-superficie text-tinta active:bg-hueso"
               )}
             >
               {etiqueta(d)}
@@ -84,7 +84,7 @@ export function SelectorDiaHora({
               onClick={() => onElegir(h)}
               className={cn(
                 "min-h-12 rounded-xl border px-1 text-base font-medium",
-                h.inicio === elegido ? "border-tinta bg-tinta text-white" : "border-linea bg-white text-tinta active:bg-hueso"
+                h.inicio === elegido ? "border-tinta bg-tinta text-papel" : "border-linea bg-superficie text-tinta active:bg-hueso"
               )}
             >
               {horaCorta(h.inicio)}

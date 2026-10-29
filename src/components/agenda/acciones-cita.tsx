@@ -107,7 +107,7 @@ function CancelarCita({ id, volver }: { id: string; volver: string }) {
   }
 
   return (
-    <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-white p-4">
+    <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-superficie p-4">
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="volver" value={volver} />
       <input type="hidden" name="motivo" value={motivo} />

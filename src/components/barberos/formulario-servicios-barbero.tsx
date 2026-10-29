@@ -77,7 +77,7 @@ export function FormularioServiciosBarbero({
         {servicios.map((s) => {
           const f = filas[s.id];
           return (
-            <li key={s.id} className="rounded-xl border border-linea bg-white">
+            <li key={s.id} className="rounded-xl border border-linea bg-superficie">
               <label className="flex min-h-16 items-center gap-3 px-4 py-2">
                 <input
                   type="checkbox"
@@ -124,7 +124,7 @@ export function FormularioServiciosBarbero({
                       id={`duracion-${s.id}`}
                       value={f.duracion}
                       onChange={(e) => cambiar(s.id, { duracion: e.target.value })}
-                      className="min-h-12 w-full rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta"
+                      className="min-h-12 w-full rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta"
                     >
                       <option value="">Igual que siempre ({textoDuracion(s.duracion_min)})</option>
                       {DURACIONES.map((m) => (

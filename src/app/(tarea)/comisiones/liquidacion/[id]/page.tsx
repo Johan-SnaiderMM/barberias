@@ -27,7 +27,7 @@ export default async function DetalleLiquidacion({ params }: { params: Promise<{
       <EncabezadoTarea titulo="Liquidación" volverA={`/comisiones/barbero/${liquidacion.barbero_id}`} />
       <main className="space-y-4 px-4 pb-10 pt-5">
         {liquidacion.anulada && (
-          <section className="rounded-xl border border-rojo bg-white p-4">
+          <section className="rounded-xl border border-rojo bg-superficie p-4">
             <p className="text-base font-semibold text-rojo">Liquidación anulada</p>
             <p className="mt-1 text-base">{liquidacion.anulada_motivo}</p>
             {liquidacion.anulada_at && (
@@ -38,7 +38,7 @@ export default async function DetalleLiquidacion({ params }: { params: Promise<{
           </section>
         )}
 
-        <section className="rounded-xl border border-linea bg-white p-4">
+        <section className="rounded-xl border border-linea bg-superficie p-4">
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">
             {fechaLarga(liquidacion.fecha)} · {horaCorta(liquidacion.created_at)}
           </p>
@@ -58,7 +58,7 @@ export default async function DetalleLiquidacion({ params }: { params: Promise<{
         <section>
           <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Cobros que cubre</h2>
           <ListaPlegable
-            className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white"
+            className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-superficie"
             resumen={(n) => `Ver ${n} cobros más`}
             filas={liquidacion.items.map((c) => (
               <li key={c.cobro_id} className="flex items-baseline justify-between gap-3 px-4 py-3">

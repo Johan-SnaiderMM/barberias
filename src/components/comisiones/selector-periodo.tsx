@@ -54,7 +54,7 @@ export function SelectorPeriodo({
       </nav>
 
       <div className="flex items-center justify-between gap-2">
-        <Link href={enlace(periodo, anterior)} aria-label="Periodo anterior" className={cn(flecha, "border-linea bg-white active:bg-hueso")}>
+        <Link href={enlace(periodo, anterior)} aria-label="Periodo anterior" className={cn(flecha, "border-linea bg-superficie active:bg-hueso")}>
           <ChevronLeft className="size-6" aria-hidden />
         </Link>
         <div className="min-w-0 text-center">
@@ -62,7 +62,7 @@ export function SelectorPeriodo({
           <p className="text-base text-tinta-2">{detalle}</p>
         </div>
         {haySiguiente ? (
-          <Link href={enlace(periodo, siguiente)} aria-label="Periodo siguiente" className={cn(flecha, "border-linea bg-white active:bg-hueso")}>
+          <Link href={enlace(periodo, siguiente)} aria-label="Periodo siguiente" className={cn(flecha, "border-linea bg-superficie active:bg-hueso")}>
             <ChevronRight className="size-6" aria-hidden />
           </Link>
         ) : (

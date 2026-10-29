@@ -72,7 +72,7 @@ export function FormularioMoverCita({
       )}
 
       {(estado.error || errorCarga) && (
-        <div role="alert" className="rounded-xl border border-rojo bg-white p-3 text-base">
+        <div role="alert" className="rounded-xl border border-rojo bg-superficie p-3 text-base">
           <p className="font-semibold text-rojo">{estado.error ?? errorCarga}</p>
           {estado.motivo === "hora_ocupada" && (
             <Button

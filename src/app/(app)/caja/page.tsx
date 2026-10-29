@@ -37,7 +37,7 @@ export default async function Caja() {
         </p>
       )}
 
-      <section className="mt-4 rounded-xl border border-linea bg-white p-4" aria-label="Lo cobrado hoy">
+      <section className="mt-4 rounded-xl border border-linea bg-superficie p-4" aria-label="Lo cobrado hoy">
         <div className="flex items-center gap-2 text-tinta-2">
           <Wallet className="size-5" aria-hidden />
           <p className="text-sm font-medium uppercase tracking-wider">{yaCerrado ? `Cobrado el ${fechaCorta(caja.fecha)}` : "Cobrado hoy"}</p>

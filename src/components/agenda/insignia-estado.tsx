@@ -2,10 +2,10 @@ import { ETIQUETA_ESTADO, type EstadoCita } from "@/lib/citas";
 import { cn } from "@/lib/utils";
 
 const CLASES: Record<EstadoCita, string> = {
-  confirmada: "border-linea bg-white text-tinta",
+  confirmada: "border-linea bg-superficie text-tinta",
   en_atencion: "border-linea bg-oro text-tinta",
   atendida: "border-zinc-300 bg-hueso text-tinta-2",
-  no_asistio: "border-rojo bg-white text-rojo",
+  no_asistio: "border-rojo bg-superficie text-rojo",
   cancelada: "border-dashed border-zinc-300 bg-hueso text-tinta-2",
 };
 
@@ -14,7 +14,7 @@ const CLASES: Record<EstadoCita, string> = {
  * atendió o no llegó; sale en rojo para que el personal la resuelva.
  */
 export function InsigniaEstado({ estado, porCerrar = false }: { estado: EstadoCita; porCerrar?: boolean }) {
-  const clase = porCerrar ? "border-rojo bg-rojo text-white" : CLASES[estado];
+  const clase = porCerrar ? "border-rojo bg-rojo-solido text-white" : CLASES[estado];
   return (
     <span
       className={cn(

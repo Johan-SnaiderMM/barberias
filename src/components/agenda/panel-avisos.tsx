@@ -17,7 +17,7 @@ export function PanelAvisos({
   pendiente: boolean;
 }) {
   return (
-    <section role="alert" className="rounded-xl border border-rojo bg-white p-4">
+    <section role="alert" className="rounded-xl border border-rojo bg-superficie p-4">
       <h3 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-rojo">
         <TriangleAlert className="size-5 shrink-0" aria-hidden />
         Revisa antes de guardar

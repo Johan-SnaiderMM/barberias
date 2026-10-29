@@ -22,7 +22,7 @@ export function TecladoNumerico({ onTecla, className }: { onTecla: (tecla: Tecla
           onClick={() => onTecla(tecla)}
           className={cn(
             "flex min-h-12 items-center justify-center rounded-xl border border-linea text-2xl font-medium leading-none select-none",
-            tecla === "borrar" ? "bg-hueso active:bg-zinc-200" : "bg-white active:bg-hueso"
+            tecla === "borrar" ? "bg-hueso active:bg-zinc-200" : "bg-superficie active:bg-hueso"
           )}
         >
           {tecla === "borrar" ? <Delete className="size-6" aria-hidden /> : tecla}

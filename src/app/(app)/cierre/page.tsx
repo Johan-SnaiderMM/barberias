@@ -55,7 +55,7 @@ export default async function Cierre({ searchParams }: { searchParams: Promise<{
           <ul className="mt-2 flex flex-wrap gap-2">
             {dia.sin_cerrar.map((f) => (
               <li key={f}>
-                <Link href={`/cierre?fecha=${f}`} className="flex min-h-12 items-center rounded-xl border border-linea bg-white px-4 text-base font-medium active:bg-hueso">
+                <Link href={`/cierre?fecha=${f}`} className="flex min-h-12 items-center rounded-xl border border-linea bg-superficie px-4 text-base font-medium active:bg-hueso">
                   {fechaCorta(f)}
                 </Link>
               </li>
@@ -65,7 +65,7 @@ export default async function Cierre({ searchParams }: { searchParams: Promise<{
       )}
 
       {cierre ? (
-        <section className="mt-4 rounded-xl border border-linea bg-white p-4" aria-label="Día cerrado">
+        <section className="mt-4 rounded-xl border border-linea bg-superficie p-4" aria-label="Día cerrado">
           <div className="flex items-center gap-2 text-tinta-2">
             <CircleCheck className="size-5" aria-hidden />
             <p className="text-sm font-medium uppercase tracking-wider">Día cerrado</p>
@@ -92,7 +92,7 @@ export default async function Cierre({ searchParams }: { searchParams: Promise<{
         )
       )}
 
-      <section className="mt-4 rounded-xl border border-linea bg-white p-4" aria-label="Lo cobrado">
+      <section className="mt-4 rounded-xl border border-linea bg-superficie p-4" aria-label="Lo cobrado">
         <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Cobrado</p>
         <p className="mt-1 text-4xl font-semibold tracking-tight">{formatearPesos(cobrado)}</p>
         <dl className="mt-3 divide-y divide-hueso border-t border-hueso">
@@ -104,7 +104,7 @@ export default async function Cierre({ searchParams }: { searchParams: Promise<{
         </dl>
       </section>
 
-      <section className="mt-4 rounded-xl border border-linea bg-white p-4" aria-label="Lo que salió">
+      <section className="mt-4 rounded-xl border border-linea bg-superficie p-4" aria-label="Lo que salió">
         <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Lo que salió</p>
         <dl className="mt-2 divide-y divide-hueso">
           <Fila etiqueta={`Gastos${r.gastos > 0 ? ` (${r.gastos})` : ""}`} valor={formatearPesos(gastos)} />
@@ -112,7 +112,7 @@ export default async function Cierre({ searchParams }: { searchParams: Promise<{
         </dl>
       </section>
 
-      <section className="mt-4 rounded-xl border border-linea bg-white p-4" aria-label="Efectivo en la caja">
+      <section className="mt-4 rounded-xl border border-linea bg-superficie p-4" aria-label="Efectivo en la caja">
         <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Efectivo en la caja</p>
         <dl className="mt-2 divide-y divide-hueso">
           <Fila etiqueta="Cobrado en efectivo" valor={formatearPesos(r.efectivo_cobros)} />

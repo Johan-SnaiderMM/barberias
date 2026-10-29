@@ -16,7 +16,7 @@ export function AvisoDemo({ className = "", conRecorrido = false }: { className?
         </p>
       </div>
       {conRecorrido && (
-        <BotonGuia className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-linea bg-white px-4 text-base font-medium active:bg-hueso">
+        <BotonGuia className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-linea bg-superficie px-4 text-base font-medium active:bg-hueso">
           <Route className="size-5" aria-hidden />
           Recorrido de 2 minutos
         </BotonGuia>

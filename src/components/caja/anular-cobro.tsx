@@ -26,7 +26,7 @@ export function AnularCobro({ id, entro, reabreCita }: { id: string; entro: Peso
   }
 
   return (
-    <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-white p-4">
+    <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-superficie p-4">
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="motivo" value={motivo} />
       <p className="text-base">

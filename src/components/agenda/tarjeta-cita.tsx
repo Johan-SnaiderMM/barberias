@@ -33,7 +33,7 @@ export function TarjetaCita({
       data-guia={guia}
       className={cn(
         "block rounded-xl border p-4 active:bg-hueso",
-        apagada ? "border-dashed border-zinc-300 bg-hueso" : "border-linea bg-white",
+        apagada ? "border-dashed border-zinc-300 bg-hueso" : "border-linea bg-superficie",
         cita.estado === "en_atencion" && "border-l-8 border-l-oro"
       )}
     >

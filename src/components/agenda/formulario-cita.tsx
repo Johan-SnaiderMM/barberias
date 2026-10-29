@@ -13,7 +13,7 @@ import { textoDuracion } from "@/lib/catalogo";
 import { formatearPesos } from "@/lib/dinero";
 import type { Barbero, ClienteBuscado, EstadoFormCita, Servicio } from "@/lib/tipos/agenda";
 
-const SELECT = "min-h-12 w-full rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta";
+const SELECT = "min-h-12 w-full rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta";
 
 /**
  * Agendar una cita (`modo = "cita"`: día y hora) o registrar a quien llegó sin cita (`modo = "ahora"`: empieza ya).

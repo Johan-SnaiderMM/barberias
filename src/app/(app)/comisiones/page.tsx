@@ -40,7 +40,7 @@ export default async function Comisiones({ searchParams }: { searchParams: Promi
         <SelectorPeriodo periodo={periodo} referencia={referencia} hoy={hoy} />
       </div>
 
-      <section className="mt-5 rounded-xl border border-linea bg-white p-4" aria-label="Lo que falta por pagar">
+      <section className="mt-5 rounded-xl border border-linea bg-superficie p-4" aria-label="Lo que falta por pagar">
         <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">
           {todos ? "Por pagar a los barberos" : "Por pagarte"} hasta {fechaCorta(hasta)}
         </p>
@@ -60,7 +60,7 @@ export default async function Comisiones({ searchParams }: { searchParams: Promi
             <li key={b.id}>
               <Link
                 href={`/comisiones/barbero/${b.id}?hasta=${hasta}&periodo=${periodo}&ref=${referencia}`}
-                className="block rounded-xl border border-linea bg-white p-4 active:bg-hueso"
+                className="block rounded-xl border border-linea bg-superficie p-4 active:bg-hueso"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">

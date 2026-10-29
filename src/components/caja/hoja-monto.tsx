@@ -41,7 +41,7 @@ export function HojaMonto({
   return (
     <Hoja titulo={titulo} onCerrar={onCerrar}>
       <div className="space-y-3">
-        <p className="rounded-xl border border-linea bg-white px-4 py-3 text-right text-4xl font-semibold tracking-tight" aria-live="polite">
+        <p className="rounded-xl border border-linea bg-superficie px-4 py-3 text-right text-4xl font-semibold tracking-tight" aria-live="polite">
           {formatearPesos(valor)}
         </p>
         {children}
@@ -54,7 +54,7 @@ export function HojaMonto({
                 onClick={() => setValor(Math.min(a.valor, max))}
                 className={cn(
                   "min-h-12 rounded-xl border px-1 text-base font-medium leading-tight",
-                  valor === a.valor ? "border-tinta bg-tinta text-white" : "border-linea bg-white active:bg-hueso"
+                  valor === a.valor ? "border-tinta bg-tinta text-papel" : "border-linea bg-superficie active:bg-hueso"
                 )}
               >
                 {a.etiqueta}

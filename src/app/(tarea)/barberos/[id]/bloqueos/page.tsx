@@ -53,7 +53,7 @@ export default async function BloqueosDelBarbero({ params }: { params: Promise<{
         ) : (
           <ul className="mt-3 space-y-3">
             {bloqueos.map((b) => (
-              <li key={b.id} className="rounded-xl border border-linea bg-white p-4">
+              <li key={b.id} className="rounded-xl border border-linea bg-superficie p-4">
                 <p className="text-lg font-semibold leading-tight">{describirBloqueo(b.inicio, b.fin)}</p>
                 {b.motivo && <p className="text-base text-tinta-2">{b.motivo}</p>}
                 <div className="mt-3">

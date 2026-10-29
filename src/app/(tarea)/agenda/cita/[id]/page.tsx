@@ -69,7 +69,7 @@ export default async function DetalleCita({ params }: { params: Promise<{ id: st
     <>
       <EncabezadoTarea titulo="Cita" volverA={`/agenda?fecha=${fecha}`} />
       <main className="space-y-5 px-4 pt-5">
-        <section className="rounded-xl border border-linea bg-white p-4">
+        <section className="rounded-xl border border-linea bg-superficie p-4">
           <div className="flex items-start justify-between gap-2">
             <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">{fechaLarga(fecha)}</p>
             <InsigniaEstado estado={cita.estado} porCerrar={porCerrar(cita, ahoraMs)} />
@@ -110,7 +110,7 @@ export default async function DetalleCita({ params }: { params: Promise<{ id: st
         {cobro?.cobro_id ? (
           <Link
             href={`/caja/cobro/${cobro.cobro_id}`}
-            className="flex min-h-14 items-center gap-3 rounded-xl border border-linea bg-white px-4 active:bg-hueso"
+            className="flex min-h-14 items-center gap-3 rounded-xl border border-linea bg-superficie px-4 active:bg-hueso"
           >
             <CircleCheck className="size-6 shrink-0" aria-hidden />
             <span className="text-base font-medium">Cobrada · ver el cobro</span>

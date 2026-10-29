@@ -73,7 +73,7 @@ export function FormularioGasto({ clave: claveInicial }: { clave: string }) {
         <button
           type="button"
           onClick={() => setHojaMonto(true)}
-          className="flex min-h-16 w-full items-center justify-between gap-3 rounded-xl border border-linea bg-white px-4 text-left active:bg-hueso"
+          className="flex min-h-16 w-full items-center justify-between gap-3 rounded-xl border border-linea bg-superficie px-4 text-left active:bg-hueso"
         >
           <span className={cn("text-4xl font-semibold tracking-tight", monto === 0 && "text-tinta-2")}>{formatearPesos(monto)}</span>
           <span className="text-base font-medium text-tinta-2">{monto === 0 ? "Escribir" : "Cambiar"}</span>

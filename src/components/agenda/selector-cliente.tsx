@@ -54,7 +54,7 @@ export function SelectorCliente({
 
   if (valor.id && elegido) {
     return (
-      <div className="flex items-center gap-3 rounded-xl border border-linea bg-white p-3">
+      <div className="flex items-center gap-3 rounded-xl border border-linea bg-superficie p-3">
         <UserRound className="size-6 shrink-0" aria-hidden />
         <div className="min-w-0 flex-1">
           <p className="truncate text-lg font-semibold leading-tight">{elegido.nombre}</p>
@@ -118,7 +118,7 @@ export function SelectorCliente({
                     setElegido(c);
                     onCambio({ id: c.id, nombre: c.nombre, telefono: c.telefono ?? "" });
                   }}
-                  className="flex min-h-14 w-full items-center gap-3 rounded-xl border border-linea bg-white px-3 py-2 text-left active:bg-hueso"
+                  className="flex min-h-14 w-full items-center gap-3 rounded-xl border border-linea bg-superficie px-3 py-2 text-left active:bg-hueso"
                 >
                   <UserRound className="size-5 shrink-0" aria-hidden />
                   <span className="min-w-0 flex-1">

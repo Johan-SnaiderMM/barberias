@@ -37,7 +37,7 @@ export default async function Cartel() {
         {/* La hoja: lo único que se imprime. */}
         <section
           id="cartel"
-          className="rounded-xl border border-linea bg-white p-6 text-center print:rounded-none print:border-0 print:p-0"
+          className="rounded-xl border border-linea bg-superficie p-6 text-center print:rounded-none print:border-0 print:p-0"
         >
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">{barberia.nombre}</p>
           <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight">Reserva tu cita desde tu celular</h1>

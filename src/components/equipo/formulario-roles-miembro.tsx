@@ -47,7 +47,7 @@ export function FormularioRolesMiembro({
                 <li key={r.id}>
                   <label
                     className={`flex min-h-14 items-start gap-3 rounded-xl border px-4 py-3 ${
-                      permitido ? "border-linea bg-white" : "border-dashed border-zinc-300 bg-hueso"
+                      permitido ? "border-linea bg-superficie" : "border-dashed border-zinc-300 bg-hueso"
                     }`}
                   >
                     <input
@@ -99,7 +99,7 @@ function QuitarDelEquipo({ userId, nombre }: { userId: string; nombre: string })
           Quitar a {nombre} del equipo
         </Button>
       ) : (
-        <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-white p-4">
+        <form action={accion} className="space-y-3 rounded-xl border border-rojo bg-superficie p-4">
           <input type="hidden" name="user_id" value={userId} />
           <p className="text-base">
             <strong>{nombre}</strong> perderá el acceso a la app en este mismo momento. Su historial y su barbero se

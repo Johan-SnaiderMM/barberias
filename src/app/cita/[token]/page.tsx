@@ -50,7 +50,7 @@ export default async function MiCita({
       <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">{barberia.nombre}</p>
 
       {vigente && (nueva || movida) && (
-        <div className="mt-3 flex items-start gap-3 rounded-xl border border-linea bg-white p-4">
+        <div className="mt-3 flex items-start gap-3 rounded-xl border border-linea bg-superficie p-4">
           <CircleCheck className="mt-0.5 size-6 shrink-0" aria-hidden />
           <p className="text-base">
             <span className="font-semibold">{movida ? "Cambiamos la hora de tu cita." : "¡Listo! Tu cita quedó reservada."}</span>{" "}
@@ -63,7 +63,7 @@ export default async function MiCita({
         {vigente ? "Tu cita" : `Cita ${ESTADO_TEXTO[cita.estado]?.toLowerCase() ?? ""}`}
       </h1>
 
-      <section className="mt-4 rounded-xl border border-linea bg-white p-4">
+      <section className="mt-4 rounded-xl border border-linea bg-superficie p-4">
         <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">{fechaLarga(fecha)}</p>
         <p className="mt-1 whitespace-nowrap text-2xl font-semibold leading-tight tracking-tight">
           <time dateTime={cita.inicio}>{horaCorta(cita.inicio)}</time> – {horaCorta(cita.fin)}

@@ -61,7 +61,7 @@ export function FormularioServicio({ servicio }: { servicio?: Servicio }) {
           id="duracion_min"
           name="duracion_min"
           defaultValue={servicio?.duracion_min ?? 30}
-          className="min-h-12 w-full rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta"
+          className="min-h-12 w-full rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta"
         >
           {DURACIONES.map((m) => (
             <option key={m} value={m}>

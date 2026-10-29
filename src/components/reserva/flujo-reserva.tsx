@@ -150,7 +150,7 @@ export function FlujoReserva({
                 <button
                   type="button"
                   onClick={() => elegirServicio(s.id)}
-                  className="flex min-h-16 w-full items-center gap-3 rounded-xl border border-linea bg-white px-4 py-3 text-left active:bg-hueso"
+                  className="flex min-h-16 w-full items-center gap-3 rounded-xl border border-linea bg-superficie px-4 py-3 text-left active:bg-hueso"
                 >
                   <span className="min-w-0 flex-1">
                     <span className="block text-base font-medium leading-tight">{s.nombre}</span>
@@ -173,7 +173,7 @@ export function FlujoReserva({
               <button
                 type="button"
                 onClick={() => elegirBarbero(CUALQUIERA)}
-                className="flex min-h-16 w-full items-center gap-3 rounded-xl border border-tinta bg-white px-4 py-3 text-left active:bg-hueso"
+                className="flex min-h-16 w-full items-center gap-3 rounded-xl border border-tinta bg-superficie px-4 py-3 text-left active:bg-hueso"
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-base font-medium leading-tight">El primero disponible</span>
@@ -195,7 +195,7 @@ export function FlujoReserva({
                   <button
                     type="button"
                     onClick={() => elegirBarbero(b.id)}
-                    className="flex min-h-16 w-full items-center gap-3 rounded-xl border border-linea bg-white px-4 py-3 text-left active:bg-hueso"
+                    className="flex min-h-16 w-full items-center gap-3 rounded-xl border border-linea bg-superficie px-4 py-3 text-left active:bg-hueso"
                   >
                     <span className="min-w-0 flex-1">
                       <span className="block text-base font-medium leading-tight">{b.nombre}</span>
@@ -279,7 +279,7 @@ export function FlujoReserva({
 
           <h2 className="text-lg font-semibold">Tus datos</h2>
 
-          <dl className="divide-y divide-hueso rounded-xl border border-linea bg-white">
+          <dl className="divide-y divide-hueso rounded-xl border border-linea bg-superficie">
             <Fila etiqueta="Servicio" valor={servicio.nombre} />
             <Fila etiqueta="Con" valor={atiende?.nombre ?? "El primero disponible"} />
             <Fila etiqueta="Día" valor={fechaLarga(fechaBogota(elegido.inicio))} />
@@ -327,7 +327,7 @@ export function FlujoReserva({
             </label>
           </div>
 
-          <label className="flex min-h-14 items-start gap-3 rounded-xl border border-linea bg-white px-4 py-3">
+          <label className="flex min-h-14 items-start gap-3 rounded-xl border border-linea bg-superficie px-4 py-3">
             <input
               type="checkbox"
               checked={consentimiento}
@@ -342,7 +342,7 @@ export function FlujoReserva({
           <PieLegal slug={barberia.slug} />
 
           {estado.error && (
-            <div role="alert" className="rounded-xl border border-rojo bg-white p-3 text-base">
+            <div role="alert" className="rounded-xl border border-rojo bg-superficie p-3 text-base">
               <p className="font-semibold text-rojo">{estado.error}</p>
               {horaTomada && (
                 <Button variante="secundario" bloque className="mt-3" onClick={recargarHoras}>

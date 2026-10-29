@@ -34,7 +34,7 @@ import { cn } from "@/lib/utils";
 
 type Hoja = null | "lineas" | "servicio" | "extra" | "descuento" | "propina" | { precioDe: string };
 
-const SELECT = "min-h-12 w-full rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta";
+const SELECT = "min-h-12 w-full rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta";
 
 /**
  * Cobrar una cita (o una venta sin cita): qué se cobra, descuento y propina, cómo paga y cuánto devolver. Todo se ve
@@ -197,7 +197,7 @@ export function FormularioCobro({
         )}
 
         {/* Total a cobrar, qué incluye y los dos ajustes */}
-        <section aria-label="Total a cobrar" className="rounded-xl border border-linea bg-white p-4">
+        <section aria-label="Total a cobrar" className="rounded-xl border border-linea bg-superficie p-4">
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">A cobrar</p>
           <p className="text-5xl font-semibold tracking-tight">{formatearPesos(aCobrar)}</p>
 
@@ -257,7 +257,7 @@ export function FormularioCobro({
 
             {medio === "efectivo" && (
               <>
-                <div className="flex items-center justify-between gap-2 rounded-xl border border-linea bg-white px-4 py-2">
+                <div className="flex items-center justify-between gap-2 rounded-xl border border-linea bg-superficie px-4 py-2">
                   <div>
                     <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Recibido</p>
                     <p className="text-3xl font-semibold tracking-tight">{formatearPesos(recibido)}</p>
@@ -280,7 +280,7 @@ export function FormularioCobro({
                       onClick={() => setRecibido(valor)}
                       className={cn(
                         "min-h-12 rounded-xl border px-1 text-base font-medium leading-tight",
-                        recibido === valor ? "border-tinta bg-tinta text-white" : "border-linea bg-white active:bg-hueso"
+                        recibido === valor ? "border-tinta bg-tinta text-papel" : "border-linea bg-superficie active:bg-hueso"
                       )}
                     >
                       {i === 0 && valor === aCobrar ? "Exacto" : formatearPesos(valor).replace("$ ", "")}
@@ -293,7 +293,7 @@ export function FormularioCobro({
 
             {medio === "transferencia" && (
               <>
-                <div className="rounded-xl border border-linea bg-white p-4">
+                <div className="rounded-xl border border-linea bg-superficie p-4">
                   <p className="text-base font-medium leading-tight">Nequi, Daviplata o transferencia del banco</p>
                   {!conParteEfectivo && <p className="mt-1 text-base text-tinta-2">Confirma que el dinero llegó antes de cobrar.</p>}
                   <Label htmlFor="referencia" className="mt-3">
@@ -311,7 +311,7 @@ export function FormularioCobro({
                 </div>
                 {conParteEfectivo ? (
                   <>
-                    <div className="rounded-xl border border-linea bg-white px-4 py-2">
+                    <div className="rounded-xl border border-linea bg-superficie px-4 py-2">
                       <div className="flex items-center justify-between gap-2">
                         <div>
                           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Paga en efectivo</p>
@@ -346,7 +346,7 @@ export function FormularioCobro({
         )}
 
         {error && (
-          <p role="alert" className="rounded-xl border border-rojo bg-white p-3 text-base font-semibold text-rojo">
+          <p role="alert" className="rounded-xl border border-rojo bg-superficie p-3 text-base font-semibold text-rojo">
             {error}
           </p>
         )}

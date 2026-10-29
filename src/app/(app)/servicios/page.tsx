@@ -37,7 +37,7 @@ export default async function Servicios() {
             <li key={s.id}>
               <Link
                 href={`/servicios/${s.id}`}
-                className="flex min-h-16 items-center justify-between gap-3 rounded-xl border border-linea bg-white px-4 py-3 active:bg-hueso"
+                className="flex min-h-16 items-center justify-between gap-3 rounded-xl border border-linea bg-superficie px-4 py-3 active:bg-hueso"
               >
                 <span className="min-w-0">
                   <span className="block truncate text-lg font-semibold leading-tight">{s.nombre}</span>

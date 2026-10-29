@@ -55,7 +55,7 @@ export function SelectorDia({
           onChange={(e) => {
             if (/^\d{4}-\d{2}-\d{2}$/.test(e.target.value)) router.push(url(e.target.value));
           }}
-          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-white px-3 text-base"
+          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-superficie px-3 text-base"
         />
       </div>
     </div>

@@ -107,7 +107,7 @@ export function FormularioHorario({
         {DIAS_SEMANA.map(({ dia, nombre }) => {
           const d = semana[dia];
           return (
-            <li key={dia} className="rounded-xl border border-linea bg-white">
+            <li key={dia} className="rounded-xl border border-linea bg-superficie">
               <label className="flex min-h-14 items-center gap-3 px-4 py-2">
                 <input
                   type="checkbox"
@@ -146,7 +146,7 @@ export function FormularioHorario({
                           value={f.desde}
                           onChange={(e) => cambiarFranja(dia, i, { desde: e.target.value })}
                           aria-label={`${nombre}, franja ${i + 1}, desde`}
-                          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-white px-3 text-base"
+                          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-superficie px-3 text-base"
                         />
                         <span className="text-base text-tinta-2">a</span>
                         <input
@@ -155,7 +155,7 @@ export function FormularioHorario({
                           value={f.hasta}
                           onChange={(e) => cambiarFranja(dia, i, { hasta: e.target.value })}
                           aria-label={`${nombre}, franja ${i + 1}, hasta`}
-                          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-white px-3 text-base"
+                          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-superficie px-3 text-base"
                         />
                       </div>
                     </div>

@@ -56,7 +56,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
         </Link>
       )}
 
-      <section className="mt-6 rounded-xl border border-linea bg-white p-4" data-guia={dia.ventas || dia.comisiones || dia.gastos ? undefined : "resumen"}>
+      <section className="mt-6 rounded-xl border border-linea bg-superficie p-4" data-guia={dia.ventas || dia.comisiones || dia.gastos ? undefined : "resumen"}>
         <div className="flex items-center gap-2">
           <CalendarDays className="size-6" aria-hidden />
           <h2 className="text-xl font-semibold tracking-tight">Hoy</h2>
@@ -110,7 +110,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<{
       </section>
 
       {(dia.ventas || dia.comisiones || dia.gastos) && (
-        <section className="mt-4 rounded-xl border border-linea bg-white p-4" aria-label="Las cifras del día" data-guia="resumen">
+        <section className="mt-4 rounded-xl border border-linea bg-superficie p-4" aria-label="Las cifras del día" data-guia="resumen">
           <div className="flex items-center gap-2">
             <Wallet className="size-6" aria-hidden />
             <h2 className="text-xl font-semibold tracking-tight">

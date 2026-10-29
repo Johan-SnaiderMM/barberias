@@ -27,7 +27,7 @@ export function FormularioNota({ clienteId, nota }: { clienteId: string; nota: s
           rows={3}
           placeholder="Degradé 2 a los lados, barba al ras…"
           onChange={(e) => setTexto(e.target.value)}
-          className="w-full rounded-xl border border-borde-campo bg-white p-3 text-base text-tinta placeholder:text-tinta-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tinta"
+          className="w-full rounded-xl border border-borde-campo bg-superficie p-3 text-base text-tinta placeholder:text-tinta-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tinta"
         />
         <p className="text-right text-base text-tinta-2">{texto.length}/300</p>
       </div>

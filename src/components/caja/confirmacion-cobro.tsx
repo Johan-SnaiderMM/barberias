@@ -19,13 +19,13 @@ export function ConfirmacionCobro({ cobrado, volverA, volverTexto }: { cobrado: 
       <p className="mt-1 text-5xl font-semibold tracking-tight">{formatearPesos(cobrado.cobrado)}</p>
 
       {cobrado.vuelto > 0 && (
-        <section className="mt-5 rounded-xl border border-tinta bg-white p-4">
+        <section className="mt-5 rounded-xl border border-tinta bg-superficie p-4">
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Devuelve</p>
           <p className="text-4xl font-semibold tracking-tight">{formatearPesos(cobrado.vuelto)}</p>
         </section>
       )}
 
-      <dl className="mt-5 divide-y divide-hueso rounded-xl border border-linea bg-white">
+      <dl className="mt-5 divide-y divide-hueso rounded-xl border border-linea bg-superficie">
         <Fila etiqueta="Servicios" valor={formatearPesos(cobrado.subtotal)} />
         {cobrado.descuento > 0 && <Fila etiqueta="Descuento" valor={`− ${formatearPesos(cobrado.descuento)}`} />}
         {cobrado.propina > 0 && <Fila etiqueta="Propina" valor={formatearPesos(cobrado.propina)} />}

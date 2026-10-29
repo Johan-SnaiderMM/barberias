@@ -118,7 +118,7 @@ export function GuiaRecorrido() {
       type="button"
       onClick={abrirGuia}
       aria-label={`Recorrido guiado, paso ${estado.paso + 1} de ${PASOS.length}. Toca para ver la instrucción`}
-      className="fixed right-3 top-[calc(0.25rem+env(safe-area-inset-top,0px))] z-30 flex min-h-12 items-center gap-2 rounded-full border border-linea bg-white px-4 text-base font-medium active:bg-hueso"
+      className="fixed right-3 top-[calc(0.25rem+env(safe-area-inset-top,0px))] z-30 flex min-h-12 items-center gap-2 rounded-full border border-linea bg-superficie px-4 text-base font-medium active:bg-hueso"
     >
       <Lightbulb className="size-5" aria-hidden />
       {estado.paso + 1}/{PASOS.length}

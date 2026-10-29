@@ -50,12 +50,12 @@ export function FormularioCierre({
 
   return (
     <div>
-      <section className="rounded-xl border border-linea bg-white p-4">
+      <section className="rounded-xl border border-linea bg-superficie p-4">
         <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">Cuenta el efectivo</p>
         <button
           type="button"
           onClick={() => setHoja(true)}
-          className="mt-2 flex min-h-16 w-full items-center justify-between gap-3 rounded-xl border border-linea bg-white px-4 text-left active:bg-hueso"
+          className="mt-2 flex min-h-16 w-full items-center justify-between gap-3 rounded-xl border border-linea bg-superficie px-4 text-left active:bg-hueso"
         >
           <span className={cn("text-4xl font-semibold tracking-tight", contado === null && "text-tinta-2")}>
             {formatearPesos(contado ?? 0)}

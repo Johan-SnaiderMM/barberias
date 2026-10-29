@@ -32,7 +32,7 @@ export function HojaLineas({
     <Hoja titulo="Qué se cobra" onCerrar={onCerrar}>
       <ul className="space-y-2">
         {lineas.map((l) => (
-          <li key={l.id} className="flex items-center gap-2 rounded-xl border border-linea bg-white pl-3">
+          <li key={l.id} className="flex items-center gap-2 rounded-xl border border-linea bg-superficie pl-3">
             <span className="min-w-0 flex-1">
               <span className="block truncate text-base font-medium leading-tight">{l.nombre}</span>
               <span className="block text-base text-tinta-2">{l.servicio_id ? "Servicio" : "Extra"}</span>
@@ -96,7 +96,7 @@ export function HojaServicio({
             <button
               type="button"
               onClick={() => alElegir(s)}
-              className="flex min-h-14 w-full items-center justify-between gap-3 rounded-xl border border-linea bg-white px-4 text-left active:bg-hueso"
+              className="flex min-h-14 w-full items-center justify-between gap-3 rounded-xl border border-linea bg-superficie px-4 text-left active:bg-hueso"
             >
               <span className="text-base font-medium">{s.nombre}</span>
               <span className="text-base font-semibold">{formatearPesos(s.precio)}</span>

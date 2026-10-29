@@ -41,7 +41,7 @@ export default async function DetalleCobro({ params }: { params: Promise<{ id: s
       <EncabezadoTarea titulo="Cobro" volverA="/caja" />
       <main className={`space-y-4 px-4 pt-5 ${puedeCobrarDeNuevo ? "pb-40" : "pb-10"}`}>
         {cobro.anulado && (
-          <section className="rounded-xl border border-rojo bg-white p-4">
+          <section className="rounded-xl border border-rojo bg-superficie p-4">
             <p className="text-base font-semibold text-rojo">Cobro anulado</p>
             <p className="mt-1 text-base">{cobro.anulado_motivo}</p>
             {cobro.anulado_at && (
@@ -54,14 +54,14 @@ export default async function DetalleCobro({ params }: { params: Promise<{ id: s
         {nuevoCobro && (
           <Link
             href={`/caja/cobro/${nuevoCobro}`}
-            className="flex min-h-14 items-center gap-3 rounded-xl border border-linea bg-white px-4 active:bg-hueso"
+            className="flex min-h-14 items-center gap-3 rounded-xl border border-linea bg-superficie px-4 active:bg-hueso"
           >
             <CircleCheck className="size-6 shrink-0" aria-hidden />
             <span className="text-base font-medium">Se volvió a cobrar · ver el cobro</span>
           </Link>
         )}
 
-        <section className="rounded-xl border border-linea bg-white p-4">
+        <section className="rounded-xl border border-linea bg-superficie p-4">
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">
             {fechaLarga(fechaBogota(cobro.created_at))} · {horaCorta(cobro.created_at)}
           </p>
@@ -73,7 +73,7 @@ export default async function DetalleCobro({ params }: { params: Promise<{ id: s
 
         <section>
           <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Qué se cobró</h2>
-          <ul className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white">
+          <ul className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-superficie">
             {cobro.items.map((i) => (
               <li key={i.id} className="flex items-baseline justify-between gap-3 px-4 py-3">
                 <span className="min-w-0">
@@ -113,7 +113,7 @@ export default async function DetalleCobro({ params }: { params: Promise<{ id: s
           {cobro.pagos.length === 0 ? (
             <p className="mt-2 rounded-xl border border-dashed border-zinc-300 bg-hueso p-3 text-base text-tinta-2">Cortesía: no hubo pago.</p>
           ) : (
-            <ul className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white">
+            <ul className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-superficie">
               {cobro.pagos.map((p) => (
                 <li key={p.id} className="flex items-baseline justify-between gap-3 px-4 py-3">
                   <span className="min-w-0">
@@ -135,7 +135,7 @@ export default async function DetalleCobro({ params }: { params: Promise<{ id: s
         {verReparto && !cobro.anulado && (
           <section>
             <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Cómo se reparte</h2>
-            <dl className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white">
+            <dl className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-superficie">
               <div className="flex items-baseline justify-between gap-3 px-4 py-3">
                 <dt className="text-base font-medium">Comisión de {cobro.barbero}</dt>
                 <dd className="text-base font-semibold">{formatearPesos(cobro.comision)}</dd>

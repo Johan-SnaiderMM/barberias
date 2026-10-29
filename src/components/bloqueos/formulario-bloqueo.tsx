@@ -123,7 +123,7 @@ export function FormularioBloqueo({ barberoId, hoy }: { barberoId: string; hoy: 
       </div>
 
       {citas && (
-        <section role="alert" className="rounded-xl border border-rojo bg-white p-4">
+        <section role="alert" className="rounded-xl border border-rojo bg-superficie p-4">
           <h3 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-rojo">
             <TriangleAlert className="size-5 shrink-0" aria-hidden />
             {citas.length === 1 ? "Ese rato ya tiene 1 cita" : `Ese rato ya tiene ${citas.length} citas`}

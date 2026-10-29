@@ -35,7 +35,7 @@ export default async function Clientes({ searchParams }: { searchParams: Promise
           autoComplete="off"
           placeholder="Nombre o celular"
           aria-label="Buscar cliente por nombre o celular"
-          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta placeholder:text-tinta-2"
+          className="min-h-12 min-w-0 flex-1 rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta placeholder:text-tinta-2"
         />
         <Button type="submit" aria-label="Buscar">
           <Search className="size-5" aria-hidden />

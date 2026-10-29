@@ -27,7 +27,7 @@ export default async function DetalleGasto({ params }: { params: Promise<{ id: s
       <EncabezadoTarea titulo="Gasto" volverA={`/gastos?fecha=${gasto.fecha}`} />
       <main className="space-y-4 px-4 pb-10 pt-5">
         {gasto.anulado && (
-          <section className="rounded-xl border border-rojo bg-white p-4">
+          <section className="rounded-xl border border-rojo bg-superficie p-4">
             <p className="text-base font-semibold text-rojo">Gasto anulado</p>
             <p className="mt-1 text-base">{gasto.anulado_motivo}</p>
             {gasto.anulado_at && (
@@ -38,7 +38,7 @@ export default async function DetalleGasto({ params }: { params: Promise<{ id: s
           </section>
         )}
 
-        <section className="rounded-xl border border-linea bg-white p-4">
+        <section className="rounded-xl border border-linea bg-superficie p-4">
           <p className="text-sm font-medium uppercase tracking-wider text-tinta-2">
             {fechaLarga(gasto.fecha)} · {horaCorta(gasto.created_at)}
           </p>
@@ -54,7 +54,7 @@ export default async function DetalleGasto({ params }: { params: Promise<{ id: s
         {gasto.foto_ruta && (
           <section>
             <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Recibo</h2>
-            <a href={`/api/foto/gasto/${gasto.id}`} target="_blank" rel="noreferrer" className="mt-2 block rounded-xl border border-linea bg-white p-2">
+            <a href={`/api/foto/gasto/${gasto.id}`} target="_blank" rel="noreferrer" className="mt-2 block rounded-xl border border-linea bg-superficie p-2">
               {/* eslint-disable-next-line @next/next/no-img-element -- foto privada servida por /api/foto (necesita la sesión); next/image no la puede pedir */}
               <img src={`/api/foto/gasto/${gasto.id}`} alt="Foto del recibo" className="max-h-96 w-full rounded-lg object-contain" />
             </a>

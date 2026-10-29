@@ -1,6 +1,7 @@
 /**
- * Contraste de la paleta (WCAG 2.x): los pares de color que la app usa de verdad, calculados con la fórmula, no a ojo.
- * Si cambias un token de `globals.css` o un color de foco, de borde o de texto de ejemplo, esto avisa si deja de leerse.
+ * Contraste de la paleta (WCAG 2.x) en modo claro Y en modo oscuro: los pares de color que la app usa de verdad, calculados
+ * con la fórmula, no a ojo. Si cambias un token de `globals.css` o un color de foco, de borde o de texto de ejemplo, esto
+ * avisa si deja de leerse.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -8,8 +9,22 @@ import { describe, expect, it } from "vitest";
 
 const leer = (...partes: string[]) => fs.readFileSync(path.join(process.cwd(), ...partes), "utf8").replace(/\r\n/g, "\n");
 
-const tokens = Object.fromEntries([...leer("src", "app", "globals.css").matchAll(/--color-([a-z0-9-]+):\s*(#[0-9a-fA-F]{6});/g)].map((m) => [m[1], m[2]]));
+const css = leer("src", "app", "globals.css");
+const bloque = (re: RegExp): string => {
+  const m = css.match(re);
+  if (!m) throw new Error(`globals.css no tiene ${re}`);
+  return m[1];
+};
+const colores = (texto: string): Record<string, string> =>
+  Object.fromEntries([...texto.matchAll(/--color-([a-z0-9-]+):\s*(#[0-9a-fA-F]{6});/g)].map((m) => [m[1], m[2]]));
+
+const CLARO = colores(bloque(/@theme \{([^}]*)\}/));
+const BLOQUE_AUTO = bloque(/:root:not\(\[data-tema="claro"\]\) \{([^}]*)\}/);
+const BLOQUE_FIJO = bloque(/:root\[data-tema="oscuro"\] \{([^}]*)\}/);
+// El modo oscuro solo cambia algunos tokens: el resto (oro, rojo-solido…) vale igual.
+const OSCURO = { ...CLARO, ...colores(BLOQUE_FIJO) };
 const BLANCO = "#ffffff";
+const TINTA_SOBRE_ORO = "#18181b";
 
 function luminancia(hex: string): number {
   const canal = (i: number) => {
@@ -24,9 +39,18 @@ function contraste(a: string, b: string): number {
   return (claro + 0.05) / (oscuro + 0.05);
 }
 
+const MODOS: [string, Record<string, string>][] = [
+  ["claro", CLARO],
+  ["oscuro", OSCURO],
+];
+
 describe("la paleta de globals.css", () => {
-  it("trae los tokens que usa la app", () => {
-    for (const t of ["tinta", "tinta-2", "papel", "hueso", "linea", "borde-campo", "oro", "rojo", "azul"]) expect(tokens[t], t).toMatch(/^#[0-9a-fA-F]{6}$/);
+  it("trae los tokens que usa la app, en claro y en oscuro", () => {
+    for (const [, t] of MODOS) {
+      for (const n of ["tinta", "tinta-2", "papel", "hueso", "superficie", "linea", "borde-campo", "oro", "rojo", "rojo-solido", "azul"]) {
+        expect(t[n], n).toMatch(/^#[0-9a-fA-F]{6}$/);
+      }
+    }
   });
 
   it("calcula bien: negro sobre blanco es 21:1 y #777 sobre blanco no llega a 4,5", () => {
@@ -34,25 +58,35 @@ describe("la paleta de globals.css", () => {
     expect(contraste("#777777", BLANCO)).toBeLessThan(4.5);
   });
 
+  it("el modo oscuro de «seguir al celular» y el de «fijarlo» llevan los mismos colores", () => {
+    const normal = (t: string) => t.replace(/\s+/g, " ").trim();
+    expect(normal(BLOQUE_AUTO)).toBe(normal(BLOQUE_FIJO));
+  });
+
   it("el texto llega a AA (4,5:1) sobre cada fondo donde se usa", () => {
-    const fondos = [BLANCO, tokens.papel, tokens.hueso];
-    for (const f of fondos) {
-      expect(contraste(tokens.tinta, f), `tinta sobre ${f}`).toBeGreaterThanOrEqual(4.5);
-      expect(contraste(tokens["tinta-2"], f), `tinta-2 sobre ${f}`).toBeGreaterThanOrEqual(4.5);
-      expect(contraste(tokens.rojo, f), `rojo sobre ${f}`).toBeGreaterThanOrEqual(4.5);
-      expect(contraste(tokens.azul, f), `azul sobre ${f}`).toBeGreaterThanOrEqual(4.5);
+    for (const [modo, t] of MODOS) {
+      for (const f of [t.superficie, t.papel, t.hueso]) {
+        for (const texto of ["tinta", "tinta-2", "rojo", "azul"]) {
+          expect(contraste(t[texto], f), `${texto} sobre ${f} (${modo})`).toBeGreaterThanOrEqual(4.5);
+        }
+      }
     }
   });
 
-  it("el texto blanco de los botones llega a AA sobre tinta y sobre rojo", () => {
-    expect(contraste(BLANCO, tokens.tinta)).toBeGreaterThanOrEqual(4.5);
-    expect(contraste(BLANCO, tokens.rojo)).toBeGreaterThanOrEqual(4.5);
+  it("la letra de los botones llega a AA: papel sobre tinta, blanco sobre rojo sólido y tinta sobre oro", () => {
+    for (const [modo, t] of MODOS) {
+      expect(contraste(t.papel, t.tinta), `papel sobre tinta (${modo})`).toBeGreaterThanOrEqual(4.5);
+      expect(contraste(BLANCO, t["rojo-solido"]), `blanco sobre rojo sólido (${modo})`).toBeGreaterThanOrEqual(4.5);
+      expect(contraste(TINTA_SOBRE_ORO, t.oro), `tinta sobre oro (${modo})`).toBeGreaterThanOrEqual(4.5);
+    }
   });
 
-  it("el borde de los campos y el anillo de foco llegan a 3:1 sobre blanco y sobre papel", () => {
-    for (const f of [BLANCO, tokens.papel]) {
-      expect(contraste(tokens["borde-campo"], f), `borde-campo sobre ${f}`).toBeGreaterThanOrEqual(3);
-      expect(contraste(tokens.tinta, f), `foco (tinta) sobre ${f}`).toBeGreaterThanOrEqual(3);
+  it("el borde de los campos y el anillo de foco llegan a 3:1 sobre la superficie y sobre el papel", () => {
+    for (const [modo, t] of MODOS) {
+      for (const f of [t.superficie, t.papel]) {
+        expect(contraste(t["borde-campo"], f), `borde-campo sobre ${f} (${modo})`).toBeGreaterThanOrEqual(3);
+        expect(contraste(t.tinta, f), `foco (tinta) sobre ${f} (${modo})`).toBeGreaterThanOrEqual(3);
+      }
     }
   });
 });
@@ -70,15 +104,25 @@ describe("las clases que no deben volver", () => {
   it("ningún anillo de foco ni texto de ejemplo en zinc-400 (2,5:1), ni campos con el borde tenue", () => {
     for (const [ruta, codigo] of fuentes) {
       expect(codigo, ruta).not.toMatch(/focus-visible:(outline|ring|border)-zinc-400|placeholder:text-zinc-400/);
-      // Un campo (input, select, textarea) con borde `linea` se pierde sobre el blanco: lleva `borde-campo`.
-      expect(codigo, ruta).not.toMatch(/min-h-12 (?:w-full|min-w-0 flex-1) rounded-xl border border-linea bg-white px-3 text-base/);
+      // Un campo (input, select, textarea) con borde `linea` se pierde sobre la superficie: lleva `borde-campo`.
+      expect(codigo, ruta).not.toMatch(/min-h-12 (?:w-full|min-w-0 flex-1) rounded-xl border border-linea bg-superficie px-3 text-base/);
     }
   });
 
   it("nada de letra de 12 px (`text-xs`) ni del guion largo en el texto de la app", () => {
     for (const [ruta, codigo] of fuentes) {
-      expect(codigo, ruta).not.toMatch(/text-xs/);
+      expect(codigo, ruta).not.toMatch(/text-xs/);
       expect(codigo, ruta).not.toContain("—");
+    }
+  });
+
+  it("nadie pinta con blanco o negro fijos: se usan los tokens para que el modo oscuro funcione", () => {
+    for (const [ruta, codigo] of fuentes) {
+      expect(codigo, ruta).not.toMatch(/\b(?:bg|border|divide|ring|outline|fill|stroke)-(?:white|black)\b/);
+      for (const linea of codigo.split("\n")) {
+        // La única letra blanca que queda es sobre un relleno sólido de color (`rojo-solido`, `verde-solido`).
+        if (/\btext-white\b/.test(linea)) expect(linea, ruta).toMatch(/-solido/);
+      }
     }
   });
 });

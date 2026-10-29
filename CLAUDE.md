@@ -107,6 +107,11 @@ Patrones de referencia (NO copiar módulos ni su auto-deploy): `C:\Users\johan\O
   propósito: el aro del recorrido late cuatro veces y se queda quieto). Las pantallas de carga y de error están en `loading.tsx`, `error.tsx` y
   `global-error.tsx`; `loading.tsx` va SOLO en `(app)` y `(tarea)`: en una página pública el servidor mandaría 200 antes de saber si la cita o la
   barbería existe y se perdería el 404 (`pantallas-de-estado.test.ts` y la e2e lo vigilan).
+- Modo oscuro: sigue al celular (`prefers-color-scheme`) y se puede fijar en «Más → Apariencia» (`src/lib/tema.ts` y
+  `SelectorTema`; `data-tema` en `<html>`). Los colores salen SIEMPRE de los tokens de `globals.css`: nada de `bg-white`,
+  `text-black` ni hex sueltos. Tarjetas, campos y hojas son `bg-superficie`; el relleno sólido con letra blanca es
+  `bg-rojo-solido` (y `bg-verde-solido`); sobre `bg-oro` la letra queda oscura. Los dos bloques oscuros de `globals.css`
+  llevan los mismos colores y `contraste.test.ts` mide cada par en claro y en oscuro. Probar las pantallas nuevas en los dos modos.
 - Listas largas: nunca enteras de una vez. La agenda del día y «Por cobrar» llevan buscador desde `MIN_PARA_BUSCAR` filas
   (`ListaCitas`, `ListaPorCobrar` y `filtrarCitas` en `src/lib/listas.ts`); una historia deja a la vista `HISTORIA_VISIBLE`
   filas y pliega el resto en un `<details>` (`ListaPlegable`: comisiones del barbero, liquidación, historial del cliente y

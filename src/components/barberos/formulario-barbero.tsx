@@ -32,7 +32,7 @@ export function FormularioBarbero({ barbero }: { barbero?: Barbero }) {
       </div>
 
       {barbero && (
-        <label className="flex min-h-14 items-center gap-3 rounded-xl border border-linea bg-white px-4 py-2">
+        <label className="flex min-h-14 items-center gap-3 rounded-xl border border-linea bg-superficie px-4 py-2">
           <input
             type="checkbox"
             name="acepta_reservas"

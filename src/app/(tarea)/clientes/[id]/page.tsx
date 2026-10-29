@@ -34,7 +34,7 @@ export default async function FichaDelCliente({ params }: { params: Promise<{ id
       <EncabezadoTarea titulo={cliente.nombre} volverA="/clientes" />
 
       <main className="space-y-6 px-4 pt-5">
-        <section className="rounded-xl border border-linea bg-white p-4">
+        <section className="rounded-xl border border-linea bg-superficie p-4">
           <p className="text-xl font-semibold tracking-tight leading-tight">{cliente.nombre}</p>
           <p className="text-base text-tinta-2">
             {cliente.telefono ? formatearTelefono(cliente.telefono) : "Sin celular"}
@@ -79,7 +79,7 @@ export default async function FichaDelCliente({ params }: { params: Promise<{ id
               className="mt-2 space-y-2"
               resumen={(n) => `Ver ${n} citas anteriores`}
               filas={cliente.citas.map((c) => (
-                <li key={c.id} className="rounded-xl border border-linea bg-white p-3">
+                <li key={c.id} className="rounded-xl border border-linea bg-superficie p-3">
                   <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1">
                     <p className="text-base font-semibold leading-tight">
                       {fechaLarga(fechaBogota(c.inicio))} · {horaCorta(c.inicio)}

@@ -90,7 +90,7 @@ export default async function Agenda({
       ) : (
         <>
           {pendientes.length > 0 && (
-            <p role="status" className="mt-4 rounded-xl border border-rojo bg-white px-4 py-3 text-base font-semibold text-rojo">
+            <p role="status" className="mt-4 rounded-xl border border-rojo bg-superficie px-4 py-3 text-base font-semibold text-rojo">
               {pendientes.length === 1
                 ? "Hay 1 cita por cerrar: di si se atendió o no llegó."
                 : `Hay ${pendientes.length} citas por cerrar: di si se atendieron o no llegaron.`}

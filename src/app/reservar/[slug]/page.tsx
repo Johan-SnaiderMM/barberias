@@ -50,7 +50,7 @@ export default async function Reservar({ params }: { params: Promise<{ slug: str
         {servicios.length > 0 && (
           <section className="mt-8">
             <h2 className="mb-2 text-sm font-medium uppercase tracking-wider text-tinta-2">Servicios</h2>
-            <ul className="divide-y divide-hueso rounded-xl border border-linea bg-white">
+            <ul className="divide-y divide-hueso rounded-xl border border-linea bg-superficie">
               {servicios.map((s) => (
                 <li key={s.id} className="flex items-baseline justify-between gap-3 px-4 py-3">
                   <span className="text-base font-medium">

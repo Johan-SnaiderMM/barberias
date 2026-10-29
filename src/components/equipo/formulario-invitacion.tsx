@@ -61,7 +61,7 @@ export function FormularioInvitacion({
               <li key={r.id}>
                 <label
                   className={`flex min-h-14 items-start gap-3 rounded-xl border px-4 py-3 ${
-                    permitido ? "border-linea bg-white" : "border-dashed border-zinc-300 bg-hueso"
+                    permitido ? "border-linea bg-superficie" : "border-dashed border-zinc-300 bg-hueso"
                   }`}
                 >
                   <input
@@ -91,7 +91,7 @@ export function FormularioInvitacion({
           id="barbero_invitado"
           value={barbero}
           onChange={(e) => setBarbero(e.target.value)}
-          className="min-h-12 w-full rounded-xl border border-borde-campo bg-white px-3 text-base text-tinta"
+          className="min-h-12 w-full rounded-xl border border-borde-campo bg-superficie px-3 text-base text-tinta"
         >
           <option value="">No es barbero</option>
           {barberos.map((b) => (
