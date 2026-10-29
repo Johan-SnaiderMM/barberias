@@ -5,6 +5,7 @@ import { BarraAccion } from "@/components/layout/barra-accion";
 import { EncabezadoTarea } from "@/components/layout/encabezado-tarea";
 import { EnlaceFila } from "@/components/layout/enlace-fila";
 import { SinPermiso } from "@/components/layout/sin-permiso";
+import { ListaPlegable } from "@/components/ui/lista-plegable";
 import { abre, puedeVer } from "@/lib/areas";
 import { obtenerComisionesDeBarbero } from "@/lib/datos/liquidaciones";
 import { formatearPesos } from "@/lib/dinero";
@@ -76,8 +77,10 @@ export default async function ComisionesDeUnBarbero({
         {datos.cobros.length > 0 && (
           <section>
             <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Lo que lo compone</h2>
-            <ul className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white">
-              {datos.cobros.map((c) => {
+            <ListaPlegable
+              className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white"
+              resumen={(n) => `Ver ${n} cobros anteriores`}
+              filas={datos.cobros.map((c) => {
                 const contenido = (
                   <>
                     <span className="min-w-0">
@@ -103,7 +106,7 @@ export default async function ComisionesDeUnBarbero({
                   </li>
                 );
               })}
-            </ul>
+            />
             {datos.cobros.length < pendiente.cobros && (
               <p className="mt-2 text-base text-tinta-2">Se muestran los {datos.cobros.length} más recientes; la liquidación incluye los {pendiente.cobros}.</p>
             )}

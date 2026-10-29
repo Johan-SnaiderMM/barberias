@@ -1,7 +1,7 @@
 import Link from "@/components/ui/enlace";
 import { CalendarOff, Plus, UserPlus } from "lucide-react";
 import { SelectorDia } from "@/components/layout/selector-dia";
-import { TarjetaCita } from "@/components/agenda/tarjeta-cita";
+import { ListaCitas } from "@/components/agenda/lista-citas";
 import { BarraAccion } from "@/components/layout/barra-accion";
 import { EnlaceFila } from "@/components/layout/enlace-fila";
 import { SinPermiso } from "@/components/layout/sin-permiso";
@@ -112,18 +112,12 @@ export default async function Agenda({
               </p>
             </section>
           ) : (
-            <ul className="mt-3 space-y-3">
-              {citas.map((c) => (
-                <li key={c.id}>
-                  <TarjetaCita
-                    cita={c}
-                    ahoraMs={ahoraMs}
-                    mostrarBarbero={alcance === "todos" && filtro === null}
-                    guia={c.id === citaDeLaGuia ? "cita" : undefined}
-                  />
-                </li>
-              ))}
-            </ul>
+            <ListaCitas
+              citas={citas}
+              ahoraMs={ahoraMs}
+              mostrarBarbero={alcance === "todos" && filtro === null}
+              citaDeLaGuia={citaDeLaGuia}
+            />
           )}
 
           {propio && (

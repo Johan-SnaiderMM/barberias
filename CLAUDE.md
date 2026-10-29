@@ -107,6 +107,10 @@ Patrones de referencia (NO copiar módulos ni su auto-deploy): `C:\Users\johan\O
   propósito: el aro del recorrido late cuatro veces y se queda quieto). Las pantallas de carga y de error están en `loading.tsx`, `error.tsx` y
   `global-error.tsx`; `loading.tsx` va SOLO en `(app)` y `(tarea)`: en una página pública el servidor mandaría 200 antes de saber si la cita o la
   barbería existe y se perdería el 404 (`pantallas-de-estado.test.ts` y la e2e lo vigilan).
+- Listas largas: nunca enteras de una vez. La agenda del día y «Por cobrar» llevan buscador desde `MIN_PARA_BUSCAR` filas
+  (`ListaCitas`, `ListaPorCobrar` y `filtrarCitas` en `src/lib/listas.ts`); una historia deja a la vista `HISTORIA_VISIBLE`
+  filas y pliega el resto en un `<details>` (`ListaPlegable`: comisiones del barbero, liquidación, historial del cliente y
+  «Cobrados hoy»). Una lista nueva que pueda crecer sigue el mismo patrón.
 - Los componentes `"use client"` no importan Zod ni `server-only`.
 - Next: esta versión tiene cambios de API. Leer `node_modules/next/dist/docs/` antes de escribir código de Next
   (aquí `middleware` es `src/proxy.ts`). No usar los tipos globales `LayoutProps`/`PageProps` (necesitan generar tipos

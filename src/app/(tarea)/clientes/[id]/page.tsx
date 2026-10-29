@@ -7,6 +7,7 @@ import { FormularioCliente } from "@/components/clientes/formulario-cliente";
 import { EncabezadoTarea } from "@/components/layout/encabezado-tarea";
 import { SinPermiso } from "@/components/layout/sin-permiso";
 import { botonVariantes } from "@/components/ui/button";
+import { ListaPlegable } from "@/components/ui/lista-plegable";
 import { abre } from "@/lib/areas";
 import { obtenerFichaCliente } from "@/lib/datos/clientes";
 import { formatearPesos } from "@/lib/dinero";
@@ -74,8 +75,10 @@ export default async function FichaDelCliente({ params }: { params: Promise<{ id
               Todavía no tiene citas.
             </p>
           ) : (
-            <ul className="mt-2 space-y-2">
-              {cliente.citas.map((c) => (
+            <ListaPlegable
+              className="mt-2 space-y-2"
+              resumen={(n) => `Ver ${n} citas anteriores`}
+              filas={cliente.citas.map((c) => (
                 <li key={c.id} className="rounded-xl border border-linea bg-white p-3">
                   <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1">
                     <p className="text-base font-semibold leading-tight">
@@ -88,7 +91,7 @@ export default async function FichaDelCliente({ params }: { params: Promise<{ id
                   </p>
                 </li>
               ))}
-            </ul>
+            />
           )}
         </section>
       </main>

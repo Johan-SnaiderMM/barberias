@@ -1,9 +1,11 @@
 import Link from "@/components/ui/enlace";
 import { Plus, Wallet } from "lucide-react";
+import { ListaPorCobrar } from "@/components/caja/lista-por-cobrar";
 import { BarraAccion } from "@/components/layout/barra-accion";
 import { EnlaceFila } from "@/components/layout/enlace-fila";
 import { SinPermiso } from "@/components/layout/sin-permiso";
 import { botonVariantes } from "@/components/ui/button";
+import { ListaPlegable } from "@/components/ui/lista-plegable";
 import { obtenerCaja } from "@/lib/datos/caja";
 import { ETIQUETA_MEDIO, formatearPesos } from "@/lib/dinero";
 import { fechaBogota, fechaCorta, fechaLarga, horaCorta, hoyBogota } from "@/lib/fechas";
@@ -75,26 +77,17 @@ export default async function Caja() {
             {hay ? "No queda nada por cobrar hoy." : "Hoy no hay citas por cobrar."}
           </p>
         ) : (
-          <ul className="mt-2 space-y-3">
-            {caja.por_cobrar.map((c) => (
-              <li key={c.id}>
-                <EnlaceFila
-                  href={`/caja/cobrar/${c.id}`}
-                  titulo={`${horaCorta(c.inicio)} · ${c.cliente}`}
-                  detalle={`${c.servicio} · con ${c.barbero} · ${formatearPesos(c.precio)}`}
-                  guia={c.id === citaDeLaGuia ? "cobrar" : undefined}
-                />
-              </li>
-            ))}
-          </ul>
+          <ListaPorCobrar citas={caja.por_cobrar} citaDeLaGuia={citaDeLaGuia} />
         )}
       </section>
 
       {caja.cobros.length > 0 && (
         <section className="mt-6">
           <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Cobrados hoy</h2>
-          <ul className="mt-2 space-y-3">
-            {caja.cobros.map((k) => (
+          <ListaPlegable
+            className="mt-2 space-y-3"
+            resumen={(n) => `Ver ${n} cobros anteriores`}
+            filas={caja.cobros.map((k) => (
               <li key={k.id}>
                 <EnlaceFila
                   href={`/caja/cobro/${k.id}`}
@@ -104,7 +97,7 @@ export default async function Caja() {
                 />
               </li>
             ))}
-          </ul>
+          />
         </section>
       )}
 

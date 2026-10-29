@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { AnularLiquidacion } from "@/components/comisiones/anular-liquidacion";
 import { EncabezadoTarea } from "@/components/layout/encabezado-tarea";
 import { SinPermiso } from "@/components/layout/sin-permiso";
+import { ListaPlegable } from "@/components/ui/lista-plegable";
 import { abre } from "@/lib/areas";
 import { obtenerLiquidacion } from "@/lib/datos/liquidaciones";
 import { ETIQUETA_MEDIO, formatearPesos } from "@/lib/dinero";
@@ -56,8 +57,10 @@ export default async function DetalleLiquidacion({ params }: { params: Promise<{
 
         <section>
           <h2 className="text-sm font-medium uppercase tracking-wider text-tinta-2">Cobros que cubre</h2>
-          <ul className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white">
-            {liquidacion.items.map((c) => (
+          <ListaPlegable
+            className="mt-2 divide-y divide-hueso rounded-xl border border-linea bg-white"
+            resumen={(n) => `Ver ${n} cobros más`}
+            filas={liquidacion.items.map((c) => (
               <li key={c.cobro_id} className="flex items-baseline justify-between gap-3 px-4 py-3">
                 <span className="min-w-0">
                   <span className="block truncate text-base font-medium">
@@ -70,7 +73,7 @@ export default async function DetalleLiquidacion({ params }: { params: Promise<{
                 <span className="text-base font-semibold">{formatearPesos(c.comision + c.propina_barbero)}</span>
               </li>
             ))}
-          </ul>
+          />
         </section>
 
         {puedeAnular && <AnularLiquidacion id={liquidacion.id} total={liquidacion.total} cobros={liquidacion.cobros} />}
